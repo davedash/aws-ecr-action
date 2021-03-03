@@ -80,7 +80,9 @@ function docker_build() {
     docker_tag_args="$docker_tag_args -t $2/$INPUT_REPO:$tag"
   done
 
+  set -x
   docker build $INPUT_EXTRA_BUILD_ARGS -f $INPUT_DOCKERFILE $docker_tag_args $INPUT_PATH
+  set +x
   echo "== FINISHED DOCKERIZE"
 }
 
